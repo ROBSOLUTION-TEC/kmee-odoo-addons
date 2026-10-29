@@ -1,0 +1,7 @@
+id,name,model_id,group_id/id,operation,domain
+access_collective_convention_user,l10n.br.hr.collective.convention.user,l10n.br.hr.collective.convention,hr.group_hr_user,r,
+access_collective_convention_manager,l10n.br.hr.collective.convention.manager,l10n.br.hr.collective.convention,hr.group_hr_manager,crud,
+access_convention_wage_floor_user,l10n.br.hr.convention.wage.floor.user,l10n.br.hr.convention.wage.floor,hr.group_hr_user,r,
+access_convention_wage_floor_manager,l10n.br.hr.convention.wage.floor.manager,l10n.br.hr.convention.wage.floor,hr.group_hr_manager,crud,
+access_syndicate_contribution_user,l10n.br.hr.syndicate.contribution.user,l10n.br.hr.syndicate.contribution,hr.group_hr_user,r,
+access_syndicate_contribution_manager,l10n.br.hr.syndicate.contribution.manager,l10n.br.hr.syndicate.contribution,hr.group_hr_manager,crud,
