@@ -1,0 +1,13 @@
+id,name,model_id,group_id/id,operation,domain
+access_inss_faixa_user,inss.faixa.user,l10n_br.hr.payroll.inss.faixa,payroll.group_payroll_user,r,
+access_inss_faixa_manager,inss.faixa.manager,l10n_br.hr.payroll.inss.faixa,payroll.group_payroll_manager,crud,
+access_irrf_faixa_user,irrf.faixa.user,l10n_br.hr.payroll.irrf.faixa,payroll.group_payroll_user,r,
+access_irrf_faixa_manager,irrf.faixa.manager,l10n_br.hr.payroll.irrf.faixa,payroll.group_payroll_manager,crud,
+access_irrf_redutor_user,irrf.redutor.user,l10n_br.hr.payroll.irrf.redutor,payroll.group_payroll_user,r,
+access_irrf_redutor_manager,irrf.redutor.manager,l10n_br.hr.payroll.irrf.redutor,payroll.group_payroll_manager,crud,
+access_sal_familia_faixa_user,sal.familia.faixa.user,l10n_br.hr.payroll.sal.familia.faixa,payroll.group_payroll_user,r,
+access_sal_familia_faixa_manager,sal.familia.faixa.manager,l10n_br.hr.payroll.sal.familia.faixa,payroll.group_payroll_manager,crud,
+access_irrf_dependente_user,irrf.dependente.user,l10n_br.hr.payroll.irrf.dependente,payroll.group_payroll_user,r,
+access_irrf_dependente_manager,irrf.dependente.manager,l10n_br.hr.payroll.irrf.dependente,payroll.group_payroll_manager,crud,
+access_cprb_transicao_user,cprb.transicao.user,l10n_br.hr.payroll.cprb.transicao,payroll.group_payroll_user,r,
+access_cprb_transicao_manager,cprb.transicao.manager,l10n_br.hr.payroll.cprb.transicao,payroll.group_payroll_manager,crud,
