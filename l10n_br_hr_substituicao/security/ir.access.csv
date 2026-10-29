@@ -1,0 +1,3 @@
+id,name,model_id,group_id/id,operation,domain
+access_hr_substituicao_user,hr.substituicao.user,hr.substituicao,hr.group_hr_user,r,
+access_hr_substituicao_manager,hr.substituicao.manager,hr.substituicao,hr.group_hr_manager,crud,
