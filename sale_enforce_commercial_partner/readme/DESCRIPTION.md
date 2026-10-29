@@ -1,1 +1,0 @@
-This module changes the behavior of the onchange function in the sales module to always search for B2B contacts in the delivery and billing addresses, even if the user selects a contact from a company.

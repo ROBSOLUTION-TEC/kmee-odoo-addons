@@ -1,3 +1,0 @@
-id,name,model_id,group_id/id,operation,domain
-access_project_task_service_class_user,project.task.service.class user,project.task.service.class,base.group_user,r,
-access_project_task_service_class_manager,project.task.service.class manager,project.task.service.class,project.group_project_manager,crud,
