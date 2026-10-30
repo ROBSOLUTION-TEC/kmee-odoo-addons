@@ -16,7 +16,9 @@ Available addons (Odoo360 20.0 branch)
 This branch of the ROBSOLUTION-TEC fork only carries the Brazilian payroll
 modules ported from KMEE 18.0 to Odoo 20.0 (hr.contract -> hr.version,
 hr.leave.type -> hr.work.entry.type). They depend on OCA/payroll
-(ROBSOLUTION-TEC/oca-payroll, branch 20.0-odoo360) and OCA/l10n-brazil.
+(ROBSOLUTION-TEC/oca-payroll, branch 20.0-odoo360), OCA/hr-holidays and OCA/calendar
+(ROBSOLUTION-TEC/oca-hr-holidays, oca-calendar) and OCA/l10n-brazil.
+l10n_br_esocial needs the Python library esociallib (0.1.3).
 
 Addon | Version | Summary
 --- | --- | ---
@@ -29,6 +31,10 @@ Addon | Version | Summary
 [l10n_br_hr_syndicate](l10n_br_hr_syndicate) | 20.0.1.0.0 | Convenções coletivas, piso salarial e contribuição sindical
 [l10n_br_hr_validacao_folha](l10n_br_hr_validacao_folha) | 20.0.1.0.0 | Validações e consistências da folha de pagamento BR
 [l10n_br_hr_substituicao](l10n_br_hr_substituicao) | 20.0.1.0.0 | Registro de substituicao temporaria de funcionarios
+[l10n_br_esocial](l10n_br_esocial) | 20.0.1.0.0 | Tabelas, eventos e transmissão eSocial S-1.3
+[l10n_br_hr_holidays_public](l10n_br_hr_holidays_public) | 20.0.1.0.0 | L10n Br HR Holidays Public
+[l10n_br_hr_arquivos_governo](l10n_br_hr_arquivos_governo) | 20.0.1.0.0 | DIRF, SEFIP e CAGED (descontinuado): consulta de histórico apenas
+[l10n_br_hr_gerador_holerite](l10n_br_hr_gerador_holerite) | 20.0.1.0.0 | BR Payroll - Gerador de Holerites
 
 <!-- /!\ do not modify below this line -->
 
