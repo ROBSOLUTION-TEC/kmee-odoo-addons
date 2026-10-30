@@ -4,7 +4,7 @@
 {
     "name": "Folha de Pagamento Brasileira",
     "summary": "Folha de pagamento brasileira com INSS, IRRF, FGTS e verbas CLT",
-    "version": "20.0.1.0.0",
+    "version": "20.0.1.1.0",
     "license": "AGPL-3",
     "author": "KMEE,Odoo Community Association (OCA)",
     "website": "https://github.com/KMEE/kmee-odoo-addons",
