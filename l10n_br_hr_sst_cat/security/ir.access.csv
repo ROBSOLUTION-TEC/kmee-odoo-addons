@@ -1,0 +1,9 @@
+id,name,model_id,group_id/id,operation,domain
+access_l10n_br_sst_acidente_user,l10n_br.sst.acidente user,l10n_br.sst.acidente,l10n_br_hr_sst.group_sst_user,r,
+access_l10n_br_sst_acidente_manager,l10n_br.sst.acidente manager,l10n_br.sst.acidente,l10n_br_hr_sst.group_sst_manager,crud,
+access_l10n_br_sst_acidente_hr,l10n_br.sst.acidente hr,l10n_br.sst.acidente,hr.group_hr_manager,cru,
+access_l10n_br_sst_cat_user,l10n_br.sst.cat user,l10n_br.sst.cat,l10n_br_hr_sst.group_sst_user,r,
+access_l10n_br_sst_cat_manager,l10n_br.sst.cat manager,l10n_br.sst.cat,l10n_br_hr_sst.group_sst_manager,crud,
+access_l10n_br_sst_cat_hr,l10n_br.sst.cat hr,l10n_br.sst.cat,hr.group_hr_manager,cru,
+l10n_br_sst_acidente_company_rule,Acidente de trabalho: multiempresa,l10n_br.sst.acidente,,crud,"['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]"
+l10n_br_sst_cat_company_rule,CAT: multiempresa,l10n_br.sst.cat,,crud,"['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]"
