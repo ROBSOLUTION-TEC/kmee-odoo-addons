@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 KMEE
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <!-- O holerite lê a apuração do funcionário. Sem esta regra, quem calcula
+         a folha mas não é do ponto veria só a própria apuração e o cálculo
+         voltaria, em silêncio, ao comportamento sem apuração. -->
+</odoo>
