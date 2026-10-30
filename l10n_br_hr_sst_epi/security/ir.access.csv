@@ -1,0 +1,5 @@
+id,name,model_id,group_id/id,operation,domain
+access_l10n_br_sst_ca_user,l10n_br.sst.ca user,l10n_br.sst.ca,l10n_br_hr_sst.group_sst_user,r,
+access_l10n_br_sst_ca_manager,l10n_br.sst.ca manager,l10n_br.sst.ca,l10n_br_hr_sst.group_sst_manager,crud,
+access_l10n_br_sst_ca_hr_user,l10n_br.sst.ca hr user,l10n_br.sst.ca,hr.group_hr_user,cru,
+access_l10n_br_sst_ca_employee,l10n_br.sst.ca employee,l10n_br.sst.ca,base.group_user,r,
