@@ -1,0 +1,9 @@
+id,name,model_id,group_id/id,operation,domain
+access_l10n_br_hr_rep_user,l10n_br.hr.rep.user,l10n_br.hr.rep,hr_attendance.group_hr_attendance_officer,r,
+access_l10n_br_hr_rep_manager,l10n_br.hr.rep.manager,l10n_br.hr.rep,hr_attendance.group_hr_attendance_manager,crud,
+access_l10n_br_hr_rep_auditor,l10n_br.hr.rep.auditor,l10n_br.hr.rep,l10n_br_hr_attendance.group_l10n_br_ponto_auditor,r,
+access_l10n_br_hr_marcacao_employee,l10n_br.hr.marcacao.employee,l10n_br.hr.marcacao,base.group_user,r,"[('employee_id.user_id', '=', user.id)]"
+access_l10n_br_hr_marcacao_user,l10n_br.hr.marcacao.user,l10n_br.hr.marcacao,hr_attendance.group_hr_attendance_officer,cru,"[('company_id', 'in', company_ids)]"
+access_l10n_br_hr_marcacao_manager,l10n_br.hr.marcacao.manager,l10n_br.hr.marcacao,hr_attendance.group_hr_attendance_manager,crud,
+access_l10n_br_hr_marcacao_auditor,l10n_br.hr.marcacao.auditor,l10n_br.hr.marcacao,l10n_br_hr_attendance.group_l10n_br_ponto_auditor,r,"[('company_id', 'in', company_ids)]"
+rep_rule_company,REP: multiempresa,l10n_br.hr.rep,,crud,"[('company_id', 'in', company_ids)]"

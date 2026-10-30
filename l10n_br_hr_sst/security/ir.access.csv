@@ -1,0 +1,15 @@
+id,name,model_id,group_id/id,operation,domain
+access_l10n_br_sst_responsavel_user,l10n_br.sst.responsavel user,l10n_br.sst.responsavel,l10n_br_hr_sst.group_sst_user,r,
+access_l10n_br_sst_responsavel_manager,l10n_br.sst.responsavel manager,l10n_br.sst.responsavel,l10n_br_hr_sst.group_sst_manager,crud,
+access_l10n_br_sst_ambiente_user,l10n_br.sst.ambiente user,l10n_br.sst.ambiente,l10n_br_hr_sst.group_sst_user,r,
+access_l10n_br_sst_ambiente_manager,l10n_br.sst.ambiente manager,l10n_br.sst.ambiente,l10n_br_hr_sst.group_sst_manager,crud,
+access_l10n_br_sst_laudo_user,l10n_br.sst.laudo user,l10n_br.sst.laudo,l10n_br_hr_sst.group_sst_user,r,
+access_l10n_br_sst_laudo_manager,l10n_br.sst.laudo manager,l10n_br.sst.laudo,l10n_br_hr_sst.group_sst_manager,crud,
+access_l10n_br_sst_risco_user,l10n_br.sst.risco user,l10n_br.sst.risco,l10n_br_hr_sst.group_sst_user,r,
+access_l10n_br_sst_risco_manager,l10n_br.sst.risco manager,l10n_br.sst.risco,l10n_br_hr_sst.group_sst_manager,crud,
+access_l10n_br_sst_risco_hr_user,l10n_br.sst.risco hr user,l10n_br.sst.risco,hr.group_hr_user,r,
+access_l10n_br_sst_ambiente_hr_user,l10n_br.sst.ambiente hr user,l10n_br.sst.ambiente,hr.group_hr_user,r,
+l10n_br_sst_ambiente_company_rule,Ambiente SST: multiempresa,l10n_br.sst.ambiente,,crud,"['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]"
+l10n_br_sst_laudo_company_rule,Laudo SST: multiempresa,l10n_br.sst.laudo,,crud,"['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]"
+l10n_br_sst_risco_company_rule,Risco SST: multiempresa,l10n_br.sst.risco,,crud,"['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]"
+l10n_br_sst_responsavel_company_rule,Responsável SST: multiempresa,l10n_br.sst.responsavel,,crud,"['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]"
