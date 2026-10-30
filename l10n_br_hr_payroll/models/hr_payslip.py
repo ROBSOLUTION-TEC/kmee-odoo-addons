@@ -50,6 +50,105 @@ class HrPayslip(models.Model):
             else:
                 rec.l10n_br_horas_noturnas_computadas = rec.l10n_br_horas_noturnas
 
+    # ------------------------------------------------------------------
+    # Odoo 20: versões do contrato (hr.version) dentro do período
+    # ------------------------------------------------------------------
+
+    def _l10n_br_versoes_contrato(self, contract):
+        """Versões do MESMO contrato (empregado + início de contrato) que
+        vigoram em algum dia do período do holerite, em ordem cronológica.
+
+        Um reajuste ou outra alteração contratual cria uma nova versão
+        (``hr.version``) com data efetiva (``date_version``) própria; as duas
+        pertencem ao mesmo contrato de trabalho.
+        """
+        self.ensure_one()
+        if not contract or not self.date_from or not self.date_to:
+            return contract
+        versoes = self.env["hr.version"].search(
+            [
+                ("employee_id", "=", contract.employee_id.id),
+                ("contract_date_start", "=", contract.contract_date_start),
+                ("date_version", "<=", self.date_to),
+            ],
+            order="date_version",
+        )
+        return versoes.filtered(
+            lambda v: v._is_overlapping_period(self.date_from, self.date_to)
+        )
+
+    def _get_employee_contracts(self):
+        """Uma única versão por contrato: a mais recente do período.
+
+        A folha brasileira apura INSS/IRRF/FGTS sobre a remuneração do mês
+        inteiro: calcular as regras uma vez por versão (comportamento do
+        motor da OCA quando há várias versões) duplicaria descontos
+        progressivos. As versões anteriores entram na proporcionalidade do
+        salário (``tools.br.salario_proporcional``).
+        """
+        contracts = super()._get_employee_contracts()
+        resultado = self.env["hr.version"]
+        for payslip in self:
+            # O contrato informado no holerite pode ser uma versão anterior
+            # do mesmo contrato (ex.: holerite criado antes do reajuste).
+            sementes = payslip.contract_id | contracts.filtered(
+                lambda c, p=payslip: c.employee_id == p.employee_id
+            )
+            for contract in sementes:
+                resultado |= payslip._l10n_br_versoes_contrato(contract)[-1:]
+        return resultado
+
+    @api.model
+    def _get_contract_period_start(self, contract):
+        # Os dias trabalhados contam desde o início do contrato, não desde a
+        # data efetiva da última versão (reajuste no meio do mês).
+        return contract.contract_date_start or contract.date_start
+
+    def _l10n_br_vigencias_salario(self, contract):
+        """Lista ``(versão, dias)`` com os dias de cada vigência no período.
+
+        Mês comercial de 30 dias: os dias de cada versão são os dias corridos
+        da sua vigência dentro do período, e a última versão fica com o
+        restante até completar os dias trabalhados do mês (admissão e
+        demissão já descontadas).
+        """
+        self.ensure_one()
+        versoes = self._l10n_br_versoes_contrato(contract) or contract
+        total = salary_rules_br.dias_trabalhados_mes(
+            self.date_from,
+            self.date_to,
+            contract.contract_date_start or contract.date_start,
+            contract.contract_date_end or contract.date_end,
+        )
+        if len(versoes) <= 1:
+            return [(versoes, total)]
+        vigencias = []
+        usados = 0
+        for versao in versoes[:-1]:
+            dias = salary_rules_br.dias_trabalhados_mes(
+                self.date_from, self.date_to, versao.date_start, versao.date_end
+            )
+            dias = min(dias, total - usados)
+            vigencias.append((versao, dias))
+            usados += dias
+        vigencias.append((versoes[-1], max(total - usados, 0)))
+        return vigencias
+
+    def _l10n_br_salario_proporcional(self, contract):
+        """Salário do mês considerando reajustes no período (RF: versões).
+
+        Com uma única versão, devolve o salário contratual (comportamento
+        anterior). Com mais de uma, soma ``salário × dias / 30`` de cada
+        vigência.
+        """
+        self.ensure_one()
+        vigencias = self._l10n_br_vigencias_salario(contract)
+        if len(vigencias) == 1:
+            return contract.wage
+        return salary_rules_br.round_money(
+            sum(versao.wage * dias / 30.0 for versao, dias in vigencias)
+        )
+
     def compute_sheet(self):
         """Ensure worked_days_line_ids are populated before computing rules.
 
@@ -248,6 +347,10 @@ class HrPayslip(models.Model):
                 contrato.contract_date_end or contrato.date_end,
             )
 
+        def salario_proporcional(contrato):
+            """Salário do mês proporcional às vigências das versões."""
+            return self._l10n_br_salario_proporcional(contrato)
+
         def dias_dsr():
             return salary_rules_br.dias_dsr(competencia.year, competencia.month)
 
@@ -299,6 +402,8 @@ class HrPayslip(models.Model):
             calc_salario_familia=calc_salario_familia,
             # Dias de vigência do contrato no mês (verbas proporcionais).
             dias_trabalhados_mes=dias_trabalhados_mes,
+            # Salário com reajuste no meio do mês (dias de cada versão).
+            salario_proporcional=salario_proporcional,
             calc_pensao_alimenticia=salary_rules_br.calc_pensao_alimenticia,
             # Dias úteis/DSR da competência (RF-26).
             dias_dsr=dias_dsr,
