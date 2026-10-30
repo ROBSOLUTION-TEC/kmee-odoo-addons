@@ -1,0 +1,5 @@
+id,name,model_id,group_id/id,operation,domain
+access_afd_import_user,l10n_br.hr.afd.import.user,l10n_br.hr.afd.import,hr_attendance.group_hr_attendance_officer,cru,
+access_afd_import_manager,l10n_br.hr.afd.import.manager,l10n_br.hr.afd.import,hr_attendance.group_hr_attendance_manager,crud,
+access_afd_import_auditor,l10n_br.hr.afd.import.auditor,l10n_br.hr.afd.import,l10n_br_hr_attendance.group_l10n_br_ponto_auditor,r,
+access_afd_export_wizard,l10n_br.hr.afd.export.wizard,l10n_br.hr.afd.export.wizard,hr_attendance.group_hr_attendance_officer,crud,
