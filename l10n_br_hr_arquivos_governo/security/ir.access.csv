@@ -1,0 +1,7 @@
+id,name,model_id,group_id/id,operation,domain
+access_l10n_br_hr_dirf_user,l10n_br.hr.dirf.user,l10n_br.hr.dirf,hr.group_hr_user,r,
+access_l10n_br_hr_dirf_manager,l10n_br.hr.dirf.manager,l10n_br.hr.dirf,hr.group_hr_manager,crud,
+access_l10n_br_hr_sefip_user,l10n_br.hr.sefip.user,l10n_br.hr.sefip,hr.group_hr_user,r,
+access_l10n_br_hr_sefip_manager,l10n_br.hr.sefip.manager,l10n_br.hr.sefip,hr.group_hr_manager,crud,
+access_l10n_br_hr_caged_user,l10n_br.hr.caged.user,l10n_br.hr.caged,hr.group_hr_user,r,
+access_l10n_br_hr_caged_manager,l10n_br.hr.caged.manager,l10n_br.hr.caged,hr.group_hr_manager,crud,
