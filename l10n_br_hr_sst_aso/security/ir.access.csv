@@ -1,0 +1,14 @@
+id,name,model_id,group_id/id,operation,domain
+access_l10n_br_sst_pcmso_user,l10n_br.sst.pcmso user,l10n_br.sst.pcmso,l10n_br_hr_sst.group_sst_user,r,
+access_l10n_br_sst_pcmso_manager,l10n_br.sst.pcmso manager,l10n_br.sst.pcmso,l10n_br_hr_sst.group_sst_manager,crud,
+access_l10n_br_sst_pcmso_medico,l10n_br.sst.pcmso medico,l10n_br.sst.pcmso,l10n_br_hr_sst_aso.group_sst_medico,cru,
+access_l10n_br_sst_pcmso_faixa_user,l10n_br.sst.pcmso.faixa user,l10n_br.sst.pcmso.faixa,l10n_br_hr_sst.group_sst_user,r,
+access_l10n_br_sst_pcmso_faixa_manager,l10n_br.sst.pcmso.faixa manager,l10n_br.sst.pcmso.faixa,l10n_br_hr_sst.group_sst_manager,crud,
+access_l10n_br_sst_pcmso_faixa_medico,l10n_br.sst.pcmso.faixa medico,l10n_br.sst.pcmso.faixa,l10n_br_hr_sst_aso.group_sst_medico,crud,
+access_l10n_br_sst_exame_complementar_user,l10n_br.sst.exame.complementar user,l10n_br.sst.exame.complementar,base.group_user,r,"[('examination_id.employee_id.user_id', '=', user.id)]"
+access_l10n_br_sst_exame_complementar_hr,l10n_br.sst.exame.complementar hr,l10n_br.sst.exame.complementar,hr.group_hr_manager,crud,
+access_l10n_br_sst_exame_complementar_medico,l10n_br.sst.exame.complementar medico,l10n_br.sst.exame.complementar,l10n_br_hr_sst_aso.group_sst_medico,crud,"['|', ('examination_id.company_id', '=', False), ('examination_id.company_id', 'in', company_ids)]"
+access_hr_employee_medical_examination_medico,hr.employee.medical.examination medico,hr.employee.medical.examination,l10n_br_hr_sst_aso.group_sst_medico,crud,"['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]"
+access_l10n_br_sst_pcmso_hr_user,l10n_br.sst.pcmso hr user,l10n_br.sst.pcmso,hr.group_hr_user,r,
+access_l10n_br_sst_pcmso_faixa_hr_user,l10n_br.sst.pcmso.faixa hr user,l10n_br.sst.pcmso.faixa,hr.group_hr_user,r,
+l10n_br_sst_pcmso_company_rule,PCMSO: multiempresa,l10n_br.sst.pcmso,,crud,"['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]"

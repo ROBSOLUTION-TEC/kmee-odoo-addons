@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="group_sst_medico" model="res.groups">
+        <field name="name">Saúde Ocupacional</field>
+        <field name="privilege_id" ref="l10n_br_hr_sst.privilege_module_category_l10n_br_hr_sst" />
+        <field name="implied_ids" eval="[(4, ref('l10n_br_hr_sst.group_sst_user'))]" />
+        <field name="comment">Acessa dado clínico do trabalhador (LGPD art. 11). Grupo
+            distinto do RH: quem cuida da folha não precisa, e não deve, enxergar
+            prontuário.</field>
+    </record>
+
+    <!-- Sigilo: o RH vê o ASO do trabalhador, o trabalhador vê o próprio, e a
+         saúde ocupacional vê tudo. A regra do hr_employee_medical_examination
+         já restringe o usuário comum aos próprios exames; aqui ela ganha o
+         recorte por empresa e o acesso da saúde ocupacional. -->
+
+    <!-- Exame complementar tem dado clínico (procedimento e indicativo do
+         resultado). Sem regra, a permissão de leitura do usuário comum deixava
+         qualquer funcionário ler os exames de todos os colegas. Espelha as
+         regras do exame: o usuário comum vê só os próprios, o gestor de RH vê
+         todos e a saúde ocupacional vê os da empresa. -->
+
+
+
+</odoo>
