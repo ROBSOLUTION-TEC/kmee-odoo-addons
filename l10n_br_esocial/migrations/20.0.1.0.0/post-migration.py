@@ -11,6 +11,8 @@ novo e remove o obsoleto.
 
 import logging
 
+from odoo.tools import SQL
+
 _logger = logging.getLogger(__name__)
 
 
@@ -48,8 +50,14 @@ def migrate(cr, version):
     )
     for table, column in cr.fetchall():
         cr.execute(
-            f'UPDATE "{table}" SET "{column}" = %s WHERE "{column}" = %s',
-            (novo_id, antigo_id),
+            SQL(
+                "UPDATE %s SET %s = %s WHERE %s = %s",
+                SQL.identifier(table),
+                SQL.identifier(column),
+                novo_id,
+                SQL.identifier(column),
+                antigo_id,
+            )
         )
     cr.execute("DELETE FROM l10n_br_esocial_tipo_aso WHERE id = %s", (antigo_id,))
     cr.execute(

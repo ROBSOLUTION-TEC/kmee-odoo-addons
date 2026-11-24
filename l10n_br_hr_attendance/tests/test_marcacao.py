@@ -153,3 +153,18 @@ class TestMarcacao(PontoCommon):
         )
         self.assertEqual(len(primeiro), 64)
         self.assertNotEqual(segundo, sem_encadeamento)
+
+    def test_display_name_e_fallbacks(self):
+        dt = self._utc(2026, 3, 2, 11, 0)
+        com_func = self._criar_marcacao(30, dt)
+        self.assertIn(self.employee.name, com_func.display_name)
+        self.assertIn("NSR 30", com_func.display_name)
+
+        so_cpf = self._criar_marcacao(31, dt, employee=False, cpf="11122233344", pis_pasep=False)
+        self.assertTrue(so_cpf.display_name.startswith("11122233344 - "))
+
+        so_pis = self._criar_marcacao(32, dt, employee=False, cpf=False, pis_pasep="12045678905")
+        self.assertTrue(so_pis.display_name.startswith("12045678905 - "))
+
+        pendente = self._criar_marcacao(33, dt, employee=False, cpf=False, pis_pasep=False)
+        self.assertTrue(pendente.display_name.startswith("pendente - "))

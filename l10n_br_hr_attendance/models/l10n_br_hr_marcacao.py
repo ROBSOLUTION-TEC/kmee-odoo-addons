@@ -53,7 +53,7 @@ class L10nBrHrMarcacao(models.Model):
     _name = "l10n_br.hr.marcacao"
     _description = "Marcação de Ponto"
     _order = "datetime_marcacao desc, nsr desc"
-    _rec_name = "display_name"
+    _rec_names_search = ("employee_id", "cpf", "pis_pasep")
 
     # Campos que descrevem o FATO registrado pelo REP. Alterá-los seria
     # adulteração (art. 74, IV e art. 98) - o ORM recusa o write.
@@ -237,17 +237,21 @@ class L10nBrHrMarcacao(models.Model):
         for rec in self:
             rec.fonte_aej = FONTE_MARCACAO_AEJ.get(rec.origem, "T")
 
-    def name_get(self):
-        resultado = []
+    @api.depends("employee_id.name", "cpf", "pis_pasep", "datetime_marcacao", "nsr")
+    def _compute_display_name(self):
         for rec in self:
-            nome = rec.employee_id.name or rec.cpf or rec.pis_pasep or _("pendente")
+            nome = (
+                rec.employee_id.name
+                or rec.cpf
+                or rec.pis_pasep
+                or self.env._("pendente")
+            )
             data = (
                 fields.Datetime.to_string(rec.datetime_marcacao)
                 if rec.datetime_marcacao
                 else ""
             )
-            resultado.append((rec.id, "%s - %s (NSR %s)" % (nome, data, rec.nsr)))
-        return resultado
+            rec.display_name = f"{nome} - {data} (NSR {rec.nsr})"
 
     @api.constrains("tipo_marcacao", "origem", "motivo")
     def _check_motivo(self):
