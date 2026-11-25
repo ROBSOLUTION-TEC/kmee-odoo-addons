@@ -5,3 +5,6 @@ access_l10n_br_hr_sefip_user,l10n_br.hr.sefip.user,l10n_br.hr.sefip,hr.group_hr_
 access_l10n_br_hr_sefip_manager,l10n_br.hr.sefip.manager,l10n_br.hr.sefip,hr.group_hr_manager,crud,
 access_l10n_br_hr_caged_user,l10n_br.hr.caged.user,l10n_br.hr.caged,hr.group_hr_user,r,
 access_l10n_br_hr_caged_manager,l10n_br.hr.caged.manager,l10n_br.hr.caged,hr.group_hr_manager,crud,
+dirf_rule_company,DIRF: multiempresa,l10n_br.hr.dirf,,crud,"['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]"
+sefip_rule_company,SEFIP: multiempresa,l10n_br.hr.sefip,,crud,"['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]"
+caged_rule_company,CAGED: multiempresa,l10n_br.hr.caged,,crud,"['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]"
